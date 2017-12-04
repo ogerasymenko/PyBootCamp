@@ -1,8 +1,11 @@
 def fibonacci(n):
-    """Function accept number and return Fibonacci summ for this number"""
-    if n == 0 or n == 1:
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
-    
-print(fibonacci(10))
+    """Function accept number and return Fibonacci siquence for this number"""
+    numbers = []
+    a = 0
+    b = 1
+    for i in range(n):
+        numbers.append(str(a))
+        a, b = b, a+b
+    return ', '.join(numbers)
+
+print(fibonacci(7))
