@@ -10,7 +10,6 @@ def num_func(num_list):
                 continue
     for a in arr:
         print a[0], '+', a[1]
-    
     return None
 
 num_func([1,2,3,4,5,5,6])
