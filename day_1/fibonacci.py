@@ -1,5 +1,5 @@
 def fibonacci(n):
-    """Function accept number and return Fibonacci siquence for this number"""
+    """Function accept number and return string with Fibonacci siquence for this number"""
     numbers = []
     a = 0
     b = 1

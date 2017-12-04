@@ -1,6 +1,6 @@
 def num_func(num_list):
-    """Function accept list with numbers and returns
-    list with unique pairs wich equal 10"""
+    """Function accept list with integers, print unique pairs wich equal 10
+    and returns None"""
     arr = []
     for i in num_list:
         for n in num_list[1:]:
