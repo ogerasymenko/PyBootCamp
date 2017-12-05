@@ -8,5 +8,5 @@ cd /home/vagrant/pbc/day_2/
 source bin/activate
 # update pip && install depencies
 ./update-pip.sh
-pytest -v
+pytest -v code/
 ```
