@@ -8,6 +8,5 @@ cd /home/vagrant/pbc/day_2/
 source bin/activate
 # update pip && install depencies
 ./update-pip.sh
-python test_fib.py
-python test_numbers.py
+pytest -v
 ```
