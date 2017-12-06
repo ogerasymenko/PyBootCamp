@@ -1,3 +1,14 @@
+def func_info(func):
+    """Decorator for printing info about passed function"""
+    def info(*args):
+        for a in args:
+            print('argumet: {}\narg type: {}\ndecorated func name: {}'.format(a, type(a), func.__name__))
+        rs = func(*args)
+        return rs
+    return info
+
+
+@func_info
 def num_func(num_list):
     """Function accept list with integers, print unique pairs wich equal 10
     and returns None"""
@@ -14,4 +25,4 @@ def num_func(num_list):
     return None
 
 if __name__ == '__main__':
-    num_func([1,2,3,4,5,5,6])
+    num_func((1,2,3,4,5,5,6))
