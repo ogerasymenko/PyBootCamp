@@ -4,13 +4,13 @@ import sys
 
 def func_info(func):
     """Decorator for printing info about passed function"""
-    def info(*args):
+    def func_name(*args):
         for a in args:
             print type(a)
             print a
         rs = func(*args)
         return rs
-    return info
+    return func_name
                   
 
 @func_info
