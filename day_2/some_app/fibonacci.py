@@ -6,7 +6,8 @@ def func_info(func):
     """Decorator for printing info about passed function"""
     def info(*args):
         for a in args:
-            print('argumet: {}\narg type: {}\ndecorated func name: {}'.format(a, type(a), func.__name__))
+            print type(a)
+            print a
         rs = func(*args)
         return rs
     return info
@@ -25,11 +26,8 @@ def fibonacci(n):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Number for processing.')
-    parser.add_argument('-n', '--number', type=int, help='Integer nubmer for Fibonacci siquence')
+    parser.add_argument('-n', '--number', type=int, required=True, help='Integer nubmer for Fibonacci siquence')
+    parser.add_argument('-u', '--use', action='store_true', help="A number to print")
     args = parser.parse_args()
+    print(fibonacci(args.number))
     
-    if not args.number:
-        print('Args required. Type -h too see detail.')
-        sys.exit(0)
-    else:
-        print(fibonacci(args.number))

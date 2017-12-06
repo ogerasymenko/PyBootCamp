@@ -2,7 +2,8 @@ def func_info(func):
     """Decorator for printing info about passed function"""
     def info(*args):
         for a in args:
-            print('argumet: {}\narg type: {}\ndecorated func name: {}'.format(a, type(a), func.__name__))
+            print type(a)
+            print a
         rs = func(*args)
         return rs
     return info
