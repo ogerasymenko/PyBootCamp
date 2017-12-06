@@ -1,5 +1,9 @@
+import pytest
 from ..some_app.fibonacci import fibonacci
 
+
+# this test is marked with "debug" label
+@pytest.mark.debug
 def test_type():
     assert type(fibonacci(7)) == str
     
