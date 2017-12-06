@@ -1,4 +1,4 @@
-from fibonacci import fibonacci
+from ..some_app.fibonacci import fibonacci
 
 def test_type():
     assert type(fibonacci(7)) == str

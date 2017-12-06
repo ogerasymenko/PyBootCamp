@@ -1,0 +1,8 @@
+__pycache__/
+.ipynb_checkpoints/
+.cache/
+.venv/
+*.egg-info/
+*.py[co]
+.tox
+*.deb

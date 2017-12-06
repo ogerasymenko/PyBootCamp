@@ -11,7 +11,7 @@ def num_func(num_list):
     for a in arr:
         print a[0], '+', a[1]
     
-    return arr
+    return None
 
 if __name__ == '__main__':
     num_func([1,2,3,4,5,5,6])
