@@ -1,8 +1,24 @@
-**PyBootCamp Repo**
+**TODO**: (assume you are already cloned this repo)
 
-Vagrant commands:
+Commands:
 ```
-vagrant init ubuntu/trusty64
 vagrant up
-ssh vagrant@192.168.33.10
+vagrant ssh
+cd /home/vagrant/pbc/
+source bin/activate
+# update pip && install depencies
+./update-pip.sh
+pytest -v tests/
 ```
+
+Python requirements:
+
+- Python version 2.7, packages:
+  * argparse=1.1
+  * attrs==17.3.0 
+  * funcsigs==1.0.2
+  * pluggy==0.6.0
+  * py==1.5.2
+  * pytest==3.3.0
+  * selenium==3.8.0
+  * six==1.11.0

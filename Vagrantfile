@@ -13,9 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/trusty64"
-  
-  config.vm.hostname = "pbc-trusty64"
-  
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -57,6 +55,7 @@ Vagrant.configure("2") do |config|
   #
   #   # Customize the amount of memory on the VM:
      vb.memory = "1024"
+     vb.name = "pbc-trusty64"
   end
   #
   # View the documentation for the provider you are using for more
@@ -66,8 +65,24 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get install -y python-virtualenv vim
+    apt-get -y -q update
+    apt-get install -y -q python-virtualenv python-dev vim git software-properties-common htop
+    add-apt-repository ppa:webupd8team/java
+    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+    apt-get -y -q install oracle-java8-installer
+    update-java-alternatives -s java-8-oracle
+    git clone -q https://github.com/ogerasymenko/pbc-PyBootCamp /home/vagrant/pbc
+    virtualenv /home/vagrant/pbc/
+    echo "#!/bin/bash
+    
+pip install --upgrade pip
+sleep 1
+pip install -r /home/vagrant/pbc/requirements.txt" > /home/vagrant/pbc/update-pip.sh
+
+    chmod 755 /home/vagrant/pbc/update-pip.sh
+    for i in ipython attrs==17.3.0 funcsigs==1.0.2 pluggy==0.6.0 py==1.5.2 pytest==3.3.0 selenium==3.8.0 six==1.11.0 ; 
+        do echo $i >> /home/vagrant/pbc/requirements.txt ; 
+    done
+    chown -R vagrant:vagrant /home/vagrant/pbc/
   SHELL
 end
-
