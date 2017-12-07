@@ -19,11 +19,10 @@ def num_func(num_list):
             if (i+n == 10) and ((arr.count((i, n)) < 1) and (arr.count((n, i)) < 1)):
                 arr.append((i, n))
             else:
-                continue
-    for a in arr:
-        print a[0], '+', a[1]
-    
-    return None
+                continue 
+    return arr
 
 if __name__ == '__main__':
-    num_func((1,2,3,4,5,5,6))
+    result = num_func((1,2,3,4,5,5,6))
+    for r in result:
+        print r[0], '+', r[1]
