@@ -1,5 +1,5 @@
 import pytest
-from ..some_app.fibonacci import fibonacci
+from some_app.fibonacci import fibonacci
 
 
 # this test is marked with "fibs" label
