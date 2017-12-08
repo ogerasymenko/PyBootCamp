@@ -65,12 +65,15 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get -y -q update
-    apt-get install -y -q python-virtualenv python-dev vim git software-properties-common htop
-    add-apt-repository ppa:webupd8team/java
+    apt-get update
+    apt-get install -y python-virtualenv python-dev vim git software-properties-common htop mc
+    echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+    echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+    apt-get update
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-    apt-get -y -q install oracle-java8-installer
-    update-java-alternatives -s java-8-oracle
+    apt-get install -y oracle-java8-set-default   
+
     git clone -q https://github.com/ogerasymenko/pbc-PyBootCamp /home/vagrant/pbc
     virtualenv /home/vagrant/pbc/
     echo "#!/bin/bash
@@ -80,9 +83,7 @@ sleep 1
 pip install -r /home/vagrant/pbc/requirements.txt" > /home/vagrant/pbc/update-pip.sh
 
     chmod 755 /home/vagrant/pbc/update-pip.sh
-    for i in ipython==5.5.0 attrs==17.3.0 funcsigs==1.0.2 pluggy==0.6.0 py==1.5.2 pytest==3.3.0 selenium==3.8.0 six==1.11.0 paramiko==2.4.0 ; 
-        do echo $i >> /home/vagrant/pbc/requirements.txt ; 
-    done
+
     chown -R vagrant:vagrant /home/vagrant/pbc/
   SHELL
 end
