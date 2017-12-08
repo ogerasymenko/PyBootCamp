@@ -83,7 +83,6 @@ sleep 1
 pip install -r /home/vagrant/pbc/requirements.txt" > /home/vagrant/pbc/update-pip.sh
 
     chmod 755 /home/vagrant/pbc/update-pip.sh
-
     chown -R vagrant:vagrant /home/vagrant/pbc/
   SHELL
 end
