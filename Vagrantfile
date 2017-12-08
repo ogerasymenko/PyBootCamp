@@ -80,7 +80,7 @@ sleep 1
 pip install -r /home/vagrant/pbc/requirements.txt" > /home/vagrant/pbc/update-pip.sh
 
     chmod 755 /home/vagrant/pbc/update-pip.sh
-    for i in ipython attrs==17.3.0 funcsigs==1.0.2 pluggy==0.6.0 py==1.5.2 pytest==3.3.0 selenium==3.8.0 six==1.11.0 ; 
+    for i in ipython==5.5.0 attrs==17.3.0 funcsigs==1.0.2 pluggy==0.6.0 py==1.5.2 pytest==3.3.0 selenium==3.8.0 six==1.11.0 paramiko==2.4.0 ; 
         do echo $i >> /home/vagrant/pbc/requirements.txt ; 
     done
     chown -R vagrant:vagrant /home/vagrant/pbc/
