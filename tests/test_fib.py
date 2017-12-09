@@ -4,7 +4,7 @@ from some_app.fibonacci import fibonacci
 
 # this test is marked with "fibs" label
 @pytest.mark.fibs
-def test_type():
+def test_type(setup):
     assert type(fibonacci(7)) == str
 
 
@@ -17,6 +17,5 @@ def test_type():
 
 # this test is marked with "fibs" label
 @pytest.mark.fibs 
-def test_num_func(data_input, expected):
+def test_num_func(setup,data_input, expected):
     assert fibonacci(data_input) == expected
-    

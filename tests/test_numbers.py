@@ -13,5 +13,5 @@ from some_app.numbers_summ import num_func
 
 # this test is marked with "numbers" label
 @pytest.mark.numbers  
-def test_num_func(data_input, expected):
+def test_num_func(setup,data_input, expected):
     assert num_func(data_input) == expected
