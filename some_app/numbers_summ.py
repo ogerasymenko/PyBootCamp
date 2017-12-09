@@ -1,5 +1,6 @@
 import argparse
 
+
 def func_info(func):
     """Decorator for printing info about passed function"""
     def func_name(*args):
@@ -35,8 +36,7 @@ def num_func(arg):
                 arr.append((element, next_element))
             else:
                 continue
-    print num_list
-    print arr
+
     return arr
 
 if __name__ == '__main__':

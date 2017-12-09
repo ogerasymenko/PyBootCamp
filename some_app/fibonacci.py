@@ -1,5 +1,4 @@
 import argparse
-import sys
 
 
 def func_info(func):
@@ -19,7 +18,7 @@ def fibonacci(n):
     numbers = []
     a = 0
     b = 1
-    for i in range(n):
+    for i in range(int(n)):
         numbers.append(str(a))
         a, b = b, a+b
     return ', '.join(numbers)
@@ -30,4 +29,3 @@ if __name__ == '__main__':
     parser.add_argument('-u', '--use', action='store_true', help="A number to print")
     args = parser.parse_args()
     print(fibonacci(args.number))
-    
