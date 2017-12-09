@@ -14,8 +14,8 @@ def func_info(func):
 
 @func_info
 def num_func(arg):
-    """Function accept list with integers, print unique pairs wich equal 10
-    and returns None"""
+    """Function accept string with integers separeted by comma,
+    and returns type list"""
     num_list = []
     arr = []
     
