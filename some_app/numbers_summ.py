@@ -1,15 +1,5 @@
 import argparse
-
-
-def func_info(func):
-    """Decorator for printing info about passed function"""
-    def func_name(*args):
-        for a in args:
-            print type(a)
-            print a
-        rs = func(*args)
-        return rs
-    return func_name
+from func_info import func_info
 
 
 @func_info
