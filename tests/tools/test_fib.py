@@ -1,6 +1,5 @@
 import pytest
-from pbc.fibonacci import fibonacci
-
+from pbc.tools.fibonacci import fibonacci
 
 # this test is marked with "fibs" label
 @pytest.mark.fibs

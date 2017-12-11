@@ -1,6 +1,5 @@
 import pytest
-from pbc.numbers_summ import num_func
-
+from pbc.tools.numbers_summ import num_func
 
 @pytest.mark.parametrize("data_input,expected",
                          [([1,2,3,4,5,5,6], [(4,6), (5,5)]), 
