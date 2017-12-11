@@ -1,5 +1,5 @@
 import argparse
-from func_info import func_info
+from pbc.func_decorators import func_info
 
 
 @func_info
@@ -8,7 +8,7 @@ def num_func(arg):
     and returns type list"""
     num_list = []
     arr = []
-    
+
     if type(arg) == list:
         num_list = arg
     elif type(arg) == tuple:
@@ -17,7 +17,7 @@ def num_func(arg):
         num_list = [int(x.strip()) for x in arg.split(',')]
     else:
         raise TypeError('Wrong input data type')
-    
+
     for index, element in enumerate(num_list):
         for next_element in num_list[index+1:]:
             if (element+next_element == 10) and \

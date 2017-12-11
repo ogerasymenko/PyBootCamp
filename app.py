@@ -1,6 +1,6 @@
 import argparse
-from some_app import fibonacci
-from some_app import num_func
+from pbc.tools.fibonacci import fibonacci
+from pbc.tools.numbers_summ import num_func
 
 parser = argparse.ArgumentParser(description='Number for processing.')
 group = parser.add_argument_group("Parameters")

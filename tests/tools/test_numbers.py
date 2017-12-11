@@ -1,5 +1,5 @@
 import pytest
-from some_app.numbers_summ import num_func
+from pbc.numbers_summ import num_func
 
 
 @pytest.mark.parametrize("data_input,expected",

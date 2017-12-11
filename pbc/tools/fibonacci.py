@@ -1,5 +1,5 @@
 import argparse
-from func_info import func_info
+from pbc.func_decorators import func_info
 
 
 @func_info
