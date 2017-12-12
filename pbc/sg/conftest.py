@@ -10,5 +10,4 @@ def selenium_precondition():
     grid.add_node()
     assert len(grid.send_command('pgrep java')) == 2
     yield grid.client
-    grid.send_command('killall java')
     grid.close()
