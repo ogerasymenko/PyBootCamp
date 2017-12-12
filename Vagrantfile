@@ -66,15 +66,21 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
+    add-apt-repository ppa:mozillateam/firefox-next
     apt-get update
-    apt-get install -y python-virtualenv python-dev vim git software-properties-common htop mc
+    apt-get install -y python-virtualenv python-dev vim git software-properties-common htop mc firefox
     echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
     echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+    sleep 1
     apt-get update
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
     apt-get install -y oracle-java8-set-default   
-
+    sleep 1
+    wget https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz
+    tar -xvzf geckodriver*
+    mv geckodriver /usr/local/sbin
+    sleep 1
     git clone -q https://github.com/ogerasymenko/pbc-PyBootCamp /home/vagrant/pbc
     virtualenv /home/vagrant/pbc/
     echo "#!/bin/bash

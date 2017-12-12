@@ -1,3 +1,4 @@
+import time
 from pbc.sg.connections import Ssh
 
 class Grid(Ssh):
@@ -14,8 +15,10 @@ class Grid(Ssh):
 
     def download(self):
         if self.is_downloaded() is False:
-            print 'Download'
+            print 'Download selenium'
             self.send_command('wget -O selenium-server-standalone-3.8.0.jar https://goo.gl/SVuU9X')
+            time.sleep(10)
+            self.send_command('wget -O sg-node.json https://gist.github.com/extsoft/aed4cb6e0b1ae3cd1d38cafffdd79310/raw/')
 
 
     def start_hub(self):
@@ -25,5 +28,5 @@ class Grid(Ssh):
 
     def add_node(self):
         print 'Add node'
-        self.send_command('java -jar selenium-server-standalone-3.8.0.jar -role node  -hub http://localhost:4444/grid/register >> log.txt 2>&1 &')
+        self.send_command('java -jar selenium-server-standalone-3.8.0.jar -role node -nodeConfig sg-node.json >> log.txt 2>&1 &')
         
