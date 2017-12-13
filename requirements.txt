@@ -7,3 +7,4 @@ pytest==3.3.0
 selenium==3.8.0
 six==1.11.0
 paramiko==2.4.0
+requests==2.9.1
