@@ -4,9 +4,9 @@ from pbc.sg.connections import Ssh
 class Grid(Ssh):
 
     def is_downloaded(self):
-        _, stdout, _= self.client.exec_command('test -f "selenium-server-standalone-3.8.0.jar" && echo yes')
+        _, result, _ = self.client.exec_command('test -f "selenium-server-standalone-3.8.0.jar" && echo yes')
         processes = []
-        for row in stdout:
+        for row in result:
             processes.append(row)
         if 'yes' in str(processes):
             return True
@@ -22,11 +22,28 @@ class Grid(Ssh):
 
 
     def start_hub(self):
-        print 'Start hub'
-        self.send_command('java -jar selenium-server-standalone-3.8.0.jar -role hub >> log.txt 2>&1 &')
+        _, result, _ = self.client.exec_command('pgrep java')
 
+        is_running = 0
+        for line in result:
+            is_running += 1 
+            break
+        
+        if not is_running:        
+            print 'Start hub'
+            self.send_command('java -jar selenium-server-standalone-3.8.0.jar -role hub >> log.txt 2>&1 &')
+            time.sleep(3)
 
     def add_node(self):
-        print 'Add node'
-        self.send_command('java -jar selenium-server-standalone-3.8.0.jar -role node -nodeConfig sg-node.json >> log.txt 2>&1 &')
+        _, result, _ = self.client.exec_command('pgrep java | head -2')
+
+        is_running = 0
+        for line in result:
+            is_running += 1
         
+
+        if (is_running < 2) and (is_running <= 3):
+            print 'Add node'
+            self.send_command('java -jar selenium-server-standalone-3.8.0.jar -role node -nodeConfig sg-node.json >> log.txt 2>&1 &')
+            time.sleep(3)
+
