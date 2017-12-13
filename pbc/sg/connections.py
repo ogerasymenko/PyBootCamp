@@ -19,8 +19,7 @@ class Ssh:
                     result.append(str(row))
                 return result
         else:
-            print("Connection not opened.")
-
+            raise ConnectionError('Cannot connect to host!')
 
     def close(self):
         self.client.close()
