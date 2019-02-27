@@ -2,7 +2,7 @@
 
 Assume you are already cloned this repository.
 
-In root folder tun next commands:
+In root folder run next commands:
 ```
 vagrant up
 vagrant ssh
